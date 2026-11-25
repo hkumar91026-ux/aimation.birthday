@@ -1,0 +1,925 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Bhabhi Jii</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: Georgia, serif;
+}
+
+.scene {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  opacity: 0;
+}
+
+/* ================= SCENE 1 ================= */
+
+#scene1 {
+  background: linear-gradient(135deg, #fff5f8, #ffe0eb);
+  animation:
+    sceneOne 14.77s linear forwards,
+    screenShake 14.77s linear forwards;
+}
+
+@keyframes sceneOne {
+  0%, 20.5% { opacity: 1; }
+  22%, 100% { opacity: 0; }
+}
+
+/* Screen shake on impact */
+@keyframes screenShake {
+  0%, 18.5% { transform: translate(0,0); }
+  18.8% { transform: translate(-7px,5px); }
+  19.1% { transform: translate(8px,-5px); }
+  19.4% { transform: translate(-6px,-4px); }
+  19.7% { transform: translate(5px,4px); }
+  20% { transform: translate(-2px,2px); }
+  20.5%, 100% { transform: translate(0,0); }
+}
+
+.heart-scene-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.big-heart {
+  transform-origin: 650px 155px;
+  animation: heartFall 14.77s linear forwards;
+}
+
+@keyframes heartFall {
+  0%, 7.5% {
+    transform: translate(0,0) rotate(0deg) scale(1);
+  }
+  9% {
+    transform: translate(0,0) rotate(7deg) scale(1.08);
+  }
+  12% {
+    transform: translate(0,0) rotate(-6deg) scale(1.02);
+  }
+  17% {
+    transform: translate(-30px,310px) rotate(35deg) scale(.9);
+  }
+  21%, 100% {
+    transform: translate(-40px,650px) rotate(65deg) scale(.8);
+    opacity: 0;
+  }
+}
+
+/* Full screen flash */
+
+.impact-flash {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    circle at 69% 77%,
+    white 0%,
+    #fff1f7 12%,
+    #ff78aa 28%,
+    transparent 65%
+  );
+  animation: impactFlash 14.77s linear forwards;
+}
+
+@keyframes impactFlash {
+  0%, 18.5% { opacity: 0; }
+  19% { opacity: 1; }
+  19.6% { opacity: .8; }
+  20.5% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* Blast core */
+
+.blast-core {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: coreBlast 14.77s ease-out forwards;
+}
+
+@keyframes coreBlast {
+  0%, 18.5% {
+    opacity: 0;
+    transform: scale(.05);
+  }
+  19% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+  20.5% {
+    opacity: 0;
+    transform: scale(3.5);
+  }
+  100% { opacity: 0; }
+}
+
+/* Expanding shockwaves */
+
+.blast-ring {
+  fill: none;
+  stroke: #ff4c91;
+  stroke-width: 9;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: shockwave 14.77s ease-out forwards;
+}
+
+.ring-two {
+  stroke: white;
+  stroke-width: 6;
+}
+
+.ring-three {
+  stroke: #ff8cb5;
+  stroke-width: 4;
+}
+
+@keyframes shockwave {
+  0%, 18.5% {
+    opacity: 0;
+    transform: scale(.1);
+  }
+  19% {
+    opacity: 1;
+    transform: scale(.7);
+  }
+  20.7% {
+    opacity: 0;
+    transform: scale(3.5);
+  }
+  100% { opacity: 0; }
+}
+
+/* Explosion rays */
+
+.blast-rays {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: raysBlast 14.77s ease-out forwards;
+}
+
+@keyframes raysBlast {
+  0%, 18.5% {
+    opacity: 0;
+    transform: scale(.1) rotate(0deg);
+  }
+  19% {
+    opacity: 1;
+    transform: scale(1) rotate(15deg);
+  }
+  20.8% {
+    opacity: 0;
+    transform: scale(2.4) rotate(45deg);
+  }
+  100% { opacity: 0; }
+}
+
+/* Blast particles */
+
+.blast-particle {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: particleBurst 14.77s ease-out forwards;
+}
+
+@keyframes particleBurst {
+  0%, 18.5% {
+    opacity: 0;
+    transform: translate(0,0) scale(.2);
+  }
+  19% {
+    opacity: 1;
+    transform: translate(0,0) scale(1.3);
+  }
+  21% {
+    opacity: 0;
+    transform: translate(var(--px),var(--py)) scale(.1);
+  }
+  100% { opacity: 0; }
+}
+
+/* Bow */
+
+.bow-assembly {
+  transform: translate(0, -100px);
+}
+
+.bow-limb {
+  fill: none;
+  stroke: #70402b;
+  stroke-width: 13;
+  stroke-linecap: round;
+  filter: drop-shadow(2px 3px 3px #57301e66);
+}
+
+.bow-highlight {
+  fill: none;
+  stroke: #c18a55;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.bow-string {
+  fill: none;
+  stroke: #6b4550;
+  stroke-width: 2.5;
+}
+
+.arrow-flight {
+  animation: arrowShoot 14.77s linear forwards;
+}
+
+@keyframes arrowShoot {
+  0%, 3% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  4% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  8% {
+    opacity: 1;
+    transform: translateX(340px);
+  }
+  9%, 100% {
+    opacity: 0;
+    transform: translateX(340px);
+  }
+}
+
+.string-release {
+  animation: stringPull 14.77s linear forwards;
+}
+
+@keyframes stringPull {
+  0%, 3% { transform: translateX(0); }
+  4% { transform: translateX(-9px); }
+  5%, 100% { transform: translateX(0); }
+}
+
+/* ================= SCENE 2 ================= */
+
+#scene2 {
+  background:
+    radial-gradient(circle at center, #fff8fc, transparent 60%),
+    linear-gradient(135deg, #f7a6c6, #f9c8df, #ed9fbe);
+  animation: sceneTwo 14.77s linear forwards;
+}
+
+@keyframes sceneTwo {
+  0%, 21% { opacity: 0; }
+  22%, 35.5% { opacity: 1; }
+  36.5%, 100% { opacity: 0; }
+}
+
+.birthday-message {
+  text-align: center;
+  padding: 20px;
+  color: #a52b60;
+}
+
+.birthday-message h1 {
+  font-family: "Brush Script MT", "Segoe Script", cursive;
+  font-size: clamp(42px, 9vw, 88px);
+  line-height: 1.35;
+  text-shadow: 0 2px 0 white, 0 5px 15px #c63b75aa;
+}
+
+.pink-word {
+  display: inline-block;
+  opacity: 0;
+  animation: pinkWordEnter .9s cubic-bezier(.2,.8,.2,1) forwards;
+  animation-delay: calc(3.25s + var(--i) * .2s);
+}
+
+@keyframes pinkWordEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(55px) scale(.3) rotate(-15deg);
+    filter: blur(12px);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(-9px) scale(1.2) rotate(4deg);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0);
+  }
+}
+
+.birthday-message p {
+  font-size: clamp(16px, 3.5vw, 27px);
+  margin-top: 20px;
+  letter-spacing: 2px;
+  color: #8c3157;
+  opacity: 0;
+  animation: subtitleEnter 1s ease-out 4.1s forwards;
+}
+
+@keyframes subtitleEnter {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.floating-heart {
+  position: absolute;
+  font-size: 25px;
+  color: white;
+  opacity: 0;
+  animation: floatHeart 2.5s ease-in-out infinite;
+}
+
+.fh1 { left: 12%; top: 25%; animation-delay: 3.3s; }
+.fh2 { left: 82%; top: 20%; animation-delay: 3.5s; }
+.fh3 { left: 20%; top: 75%; animation-delay: 3.7s; }
+.fh4 { left: 75%; top: 76%; animation-delay: 3.9s; }
+
+@keyframes floatHeart {
+  0% { opacity: 0; transform: translateY(20px) scale(.5); }
+  30%, 70% { opacity: .9; transform: translateY(-10px) scale(1); }
+  100% { opacity: 0; transform: translateY(-45px) scale(.7); }
+}
+
+/* ================= SCENE 3 ================= */
+
+#scene3 {
+  background: #ffeaf2;
+  animation: sceneThree 14.77s linear forwards;
+}
+
+@keyframes sceneThree {
+  0%, 35% { opacity: 0; }
+  37%, 98% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Full page watermark */
+
+.full-watermark {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+  --watermark-shift: -4%;
+}
+
+.full-watermark img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform:
+    translateX(var(--watermark-shift))
+    rotate(-90deg)
+    scale(1.35);
+  opacity: .42;
+}
+
+.watermark-overlay {
+  position: absolute;
+  inset: 0;
+  background: #fff0f5;
+  opacity: .06;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.tree-wrap {
+  position: relative;
+  z-index: 3;
+  width: min(96vw, 950px);
+  height: min(88vh, 680px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tree-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.branch {
+  fill: none;
+  stroke: #754638;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawBranch 3s ease-out forwards;
+}
+
+.branch.thin {
+  stroke-width: 4.5;
+}
+
+@keyframes drawBranch {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Original 500 hearts */
+
+.tree-heart {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bloomHeart .8s ease-out forwards;
+}
+
+@keyframes bloomHeart {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-25deg);
+  }
+  65% {
+    opacity: 1;
+    transform: scale(1.2) rotate(8deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+/* Continuous falling duplicate hearts */
+
+.rain-heart {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: continuousFall 2.3s ease-in infinite;
+}
+
+@keyframes continuousFall {
+  0% {
+    opacity: 0;
+    transform: translate(0,0) scale(.75) rotate(0);
+  }
+  12% {
+    opacity: 1;
+    transform: translate(0,20px) scale(1) rotate(10deg);
+  }
+  70% {
+    opacity: .95;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--drift),var(--fall-distance)) scale(.55) rotate(120deg);
+  }
+}
+
+/* Tree scene: every word animated separately */
+
+.tree-caption {
+  position: absolute;
+  z-index: 4;
+  bottom: 4%;
+  width: 100%;
+  text-align: center;
+  font-family: "Brush Script MT", "Segoe Script", cursive;
+  font-size: clamp(25px, 5vw, 45px);
+  font-weight: bold;
+  color: #a23b67;
+  text-shadow: 0 2px 3px white, 0 4px 15px #ff5b9c;
+}
+
+.tree-word {
+  display: inline-block;
+  opacity: 0;
+  animation: treeWordEnter .9s cubic-bezier(.2,.8,.2,1) forwards;
+  animation-delay: calc(10.45s + var(--i) * .2s);
+}
+
+@keyframes treeWordEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(45px) scale(.3) rotate(-12deg);
+    filter: blur(10px);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.2) rotate(5deg);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .tree-wrap {
+    height: 76vh;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= SCENE 1 ================= -->
+
+<section id="scene1" class="scene">
+
+<svg class="heart-scene-svg"
+     viewBox="0 0 900 650"
+     preserveAspectRatio="xMidYMid meet">
+
+<defs>
+  <linearGradient id="bigHeartGradient" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#ff9fbd"/>
+    <stop offset="100%" stop-color="#d92e69"/>
+  </linearGradient>
+
+  <radialGradient id="blastGradient">
+    <stop offset="0%" stop-color="#fff"/>
+    <stop offset="35%" stop-color="#ffe0ed"/>
+    <stop offset="70%" stop-color="#ff79aa"/>
+    <stop offset="100%" stop-color="#ff3d83" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+
+<!-- Big heart -->
+
+<g class="big-heart">
+  <path d="
+    M650 275
+    C615 240 500 170 500 100
+    C500 20 590 0 650 65
+    C710 0 800 20 800 100
+    C800 170 685 240 650 275Z"
+    fill="url(#bigHeartGradient)"
+    stroke="#c92d65"
+    stroke-width="4"/>
+
+  <path d="M555 70 C580 35 620 40 635 68"
+    fill="none"
+    stroke="white"
+    stroke-width="8"
+    stroke-linecap="round"
+    opacity=".55"/>
+</g>
+
+<!-- Blast centre -->
+
+<g class="blast-core">
+  <circle cx="620" cy="500" r="115" fill="url(#blastGradient)"/>
+</g>
+
+<!-- Three expanding rings -->
+
+<g>
+  <circle class="blast-ring" cx="620" cy="500" r="60"/>
+  <circle class="blast-ring ring-two" cx="620" cy="500" r="85"/>
+  <circle class="blast-ring ring-three" cx="620" cy="500" r="110"/>
+</g>
+
+<!-- Blast rays -->
+
+<g class="blast-rays" stroke="#ff5795" stroke-width="10" stroke-linecap="round">
+  <path d="M620 420 L620 345"/>
+  <path d="M620 580 L620 655"/>
+  <path d="M540 500 L465 500"/>
+  <path d="M700 500 L775 500"/>
+  <path d="M563 443 L510 390"/>
+  <path d="M677 557 L730 610"/>
+  <path d="M677 443 L730 390"/>
+  <path d="M563 557 L510 610"/>
+  <path d="M590 425 L570 355"/>
+  <path d="M650 575 L670 645"/>
+</g>
+
+<!-- Glowing particles -->
+
+<g class="blast-particle" fill="#ff4f91">
+  <circle cx="620" cy="500" r="9" style="--px:-180px;--py:-100px"/>
+  <circle cx="620" cy="500" r="7" style="--px:170px;--py:-140px"/>
+  <circle cx="620" cy="500" r="10" style="--px:190px;--py:100px"/>
+  <circle cx="620" cy="500" r="8" style="--px:-160px;--py:150px"/>
+  <circle cx="620" cy="500" r="6" style="--px:40px;--py:-210px"/>
+  <circle cx="620" cy="500" r="9" style="--px:-40px;--py:210px"/>
+  <circle cx="620" cy="500" r="7" style="--px:240px;--py:0px"/>
+  <circle cx="620" cy="500" r="8" style="--px:-240px;--py:0px"/>
+  <circle cx="620" cy="500" r="6" style="--px:120px;--py:190px"/>
+  <circle cx="620" cy="500" r="8" style="--px:-120px;--py:-190px"/>
+</g>
+
+<!-- Bow and arrow -->
+
+<g class="bow-assembly">
+  <g transform="rotate(-41 285 430)">
+
+    <path class="bow-limb"
+      d="M285 320
+         C205 350 205 390 285 430
+         C205 470 205 510 285 540"/>
+
+    <path class="bow-highlight"
+      d="M280 325
+         C225 360 225 390 280 430
+         C225 470 225 500 280 535"/>
+
+    <path class="bow-string string-release"
+      d="M285 320 L285 430 L285 540"/>
+
+    <g class="arrow-flight">
+
+      <line x1="145" y1="430" x2="285" y2="430"
+        stroke="#69442e"
+        stroke-width="5"
+        stroke-linecap="round"/>
+
+      <path d="M285 430 L265 418 L265 442 Z"
+        fill="#63412c"/>
+
+      <path d="M155 430 L135 414 L145 430 L135 446 Z"
+        fill="#c64d70"/>
+
+      <path d="M175 430 L160 418 L165 430 L160 442 Z"
+        fill="#e7a3b4"/>
+
+    </g>
+  </g>
+</g>
+
+</svg>
+
+<div class="impact-flash"></div>
+
+</section>
+
+<!-- ================= SCENE 2 ================= -->
+
+<section id="scene2" class="scene">
+
+  <span class="floating-heart fh1">♥</span>
+  <span class="floating-heart fh2">♥</span>
+  <span class="floating-heart fh3">♥</span>
+  <span class="floating-heart fh4">♥</span>
+
+  <div class="birthday-message">
+
+    <h1>
+      <span class="pink-word" style="--i:0">Happy</span>
+      <span class="pink-word" style="--i:1">Birthday</span>
+      <br>
+      <span class="pink-word" style="--i:2">Bhabhi</span>
+      <span class="pink-word" style="--i:3">Jii</span>
+    </h1>
+
+    <p>Wishing You Lots of Happiness ♥</p>
+
+  </div>
+
+</section>
+
+<!-- ================= SCENE 3 ================= -->
+
+<section id="scene3" class="scene">
+
+  <div class="full-watermark">
+    <img src="watermark.jpg" alt="">
+  </div>
+
+  <div class="watermark-overlay"></div>
+
+  <div class="tree-wrap">
+
+    <svg class="tree-svg" viewBox="0 0 900 650">
+
+      <defs>
+        <symbol id="pinkHeart" viewBox="0 0 30 28">
+          <path d="M15 26 C12 23 1 15 1 8 C1 0 10 -2 15 6 C20 -2 29 0 29 8 C29 15 18 23 15 26Z"
+            fill="#f58caf"/>
+        </symbol>
+
+        <symbol id="whiteHeart" viewBox="0 0 30 28">
+          <path d="M15 26 C12 23 1 15 1 8 C1 0 10 -2 15 6 C20 -2 29 0 29 8 C29 15 18 23 15 26Z"
+            fill="#fff"
+            stroke="#ef9bb9"
+            stroke-width="1"/>
+        </symbol>
+      </defs>
+
+      <!-- Tree trunk -->
+
+      <path class="branch"
+        style="animation-delay:5.55s"
+        d="M450 590 C445 500 455 430 450 350 C445 300 430 260 410 220"/>
+
+      <!-- Main branches -->
+
+      <path class="branch"
+        style="animation-delay:5.7s"
+        d="M450 400 C400 350 350 300 300 245 C270 215 235 205 200 190"/>
+
+      <path class="branch"
+        style="animation-delay:5.8s"
+        d="M450 370 C500 320 550 270 610 225 C650 195 680 185 715 170"/>
+
+      <!-- Small branches -->
+
+      <path class="branch thin"
+        style="animation-delay:5.9s"
+        d="M410 300 C365 255 350 210 345 165"/>
+
+      <path class="branch thin"
+        style="animation-delay:6s"
+        d="M375 330 C330 320 285 300 245 270"/>
+
+      <path class="branch thin"
+        style="animation-delay:6.05s"
+        d="M500 320 C545 275 570 230 580 175"/>
+
+      <path class="branch thin"
+        style="animation-delay:6.1s"
+        d="M545 280 C600 275 650 245 685 215"/>
+
+      <path class="branch thin"
+        style="animation-delay:6.2s"
+        d="M450 350 C455 290 465 230 470 170"/>
+
+      <path class="branch thin"
+        style="animation-delay:6.3s"
+        d="M300 245 C280 205 275 175 285 145"/>
+
+      <path class="branch thin"
+        style="animation-delay:6.35s"
+        d="M610 225 C640 190 650 155 645 125"/>
+
+      <path d="M385 595 Q450 575 515 595"
+        fill="none"
+        stroke="#a56b64"
+        stroke-width="7"
+        stroke-linecap="round"/>
+
+      <!-- Original hearts never disappear -->
+
+      <g id="heartCanopy"></g>
+
+      <!-- Separate falling copies -->
+
+      <g id="fallingCanopy"></g>
+
+    </svg>
+  </div>
+
+  <div class="tree-caption">
+    <span class="tree-word" style="--i:0">Happy</span>
+    <span class="tree-word" style="--i:1">Birthday</span>
+    <span class="tree-word" style="--i:2">Bhabhi</span>
+    <span class="tree-word" style="--i:3">Jii</span>
+    <span class="tree-word" style="--i:4">♥</span>
+  </div>
+
+</section>
+
+<script>
+
+/* ================= 500 ORIGINAL TREE HEARTS ================= */
+
+const canopy = document.getElementById("heartCanopy");
+const fallingCanopy = document.getElementById("fallingCanopy");
+
+const totalHearts = 500;
+const heartPositions = [];
+
+function random(seed) {
+  const value = Math.sin(seed * 127.1 + 311.7) * 43758.5453;
+  return value - Math.floor(value);
+}
+
+for (let i = 0; i < totalHearts; i++) {
+
+  const angle = random(i + 1) * Math.PI * 2;
+  const radius = Math.sqrt(random(i + 1000));
+
+  const x = 450 + Math.cos(angle) * radius * 290;
+  const y = 220 + Math.sin(angle) * radius * 175;
+
+  const size = 12 + random(i + 2000) * 13;
+
+  const heartType = i % 3 === 0
+    ? "#whiteHeart"
+    : "#pinkHeart";
+
+  const finalX = Math.max(155, Math.min(745, x));
+  const finalY = Math.max(85, Math.min(365, y));
+
+  const heart = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "use"
+  );
+
+  heart.setAttribute("href", heartType);
+  heart.setAttribute("x", finalX);
+  heart.setAttribute("y", finalY);
+  heart.setAttribute("width", size);
+  heart.setAttribute("height", size * .93);
+  heart.setAttribute("class", "tree-heart");
+
+  heart.style.animationDelay =
+    (6.45 + i * 0.006) + "s";
+
+  canopy.appendChild(heart);
+
+  /* Save positions for falling duplicates */
+
+  heartPositions.push({
+    x: finalX,
+    y: finalY,
+    size: size,
+    type: heartType
+  });
+}
+
+/* ================= CONTINUOUS FALLING HEARTS ================= */
+
+/*
+  Only duplicate hearts fall.
+  Original 500 hearts stay permanently on the tree.
+*/
+
+const fallingCount = 150;
+
+for (let i = 0; i < fallingCount; i++) {
+
+  const source = heartPositions[(i * 17) % totalHearts];
+
+  const fallingHeart = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "use"
+  );
+
+  fallingHeart.setAttribute("href", source.type);
+  fallingHeart.setAttribute("x", source.x);
+  fallingHeart.setAttribute("y", source.y);
+  fallingHeart.setAttribute("width", source.size);
+  fallingHeart.setAttribute("height", source.size * .93);
+  fallingHeart.setAttribute("class", "rain-heart");
+
+  const drift = (random(i + 5000) - .5) * 230;
+  const fallDistance = 280 + random(i + 6000) * 180;
+
+  fallingHeart.style.setProperty("--drift", drift + "px");
+  fallingHeart.style.setProperty("--fall-distance", fallDistance + "px");
+
+  /*
+    Falling starts after the birthday text appears.
+    Different delays create continuous falling.
+  */
+
+  fallingHeart.style.animationDelay =
+    (11.5 + (i % 45) * .045) + "s";
+
+  fallingCanopy.appendChild(fallingHeart);
+}
+
+</script>
+
+</body>
+</html>
